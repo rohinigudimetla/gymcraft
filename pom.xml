@@ -25,12 +25,12 @@
      that the project uses. In this case, the project is using version 1.8 of the Java
      programming language. This property is used by the Maven Compiler Plugin to compile
      the source code. -->
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.source>20</maven.compiler.source>
         <!-- The `maven.compiler.target` property specifies the version of the JVM that the
      compiled code should be compatible with. In this case, the compiled code is
      compatible with version 1.8 of the Java Virtual Machine (JVM). This property
      is used by the Maven Compiler Plugin to set the target JVM version. -->
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.target>20</maven.compiler.target>
         <!-- The `project.build.sourceEncoding` property specifies the character encoding
      used by the source files in the project. In this case, the encoding is UTF-8.
      This property is used by various plugins to ensure that the source code is read
@@ -178,6 +178,11 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.19.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
         </dependency>
     </dependencies>
 </project>

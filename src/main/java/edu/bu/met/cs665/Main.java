@@ -8,7 +8,7 @@
 
 package edu.bu.met.cs665;
 
-import edu.bu.met.cs665.example1.Person;
+
 
 /**
  * This is the Main class.
@@ -30,9 +30,6 @@ public class Main {
    *
    * @return String
    */
-  private String doIt() {
-    Person student = new Person("John", "Doe");
-    return student.getLastName() + ',' + student.getFirstName();
-  }
+
 
 }
