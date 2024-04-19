@@ -1,18 +1,10 @@
 package edu.bu.met.cs665;
 
-public class WorkoutPlanBuilder implements Builder {
-    private WorkoutPlan workoutPlan = new WorkoutPlan();
-
-    @Override
-    public Builder addExercise(Exercise exercise) {
-        workoutPlan.addExercise(exercise);
-        return this;
-    }
-
-    @Override
-    public WorkoutPlan build() {
-        return workoutPlan;
-    }
-
-    // other methods will be added later
+public interface WorkoutPlanBuilder {
+    WorkoutPlanBuilder1 setFocusArea(String focusArea);
+    WorkoutPlanBuilder1 setDuration(int duration);
+    WorkoutPlanBuilder1 setNumberOfSets(int numberOfSets);
+    WorkoutPlanBuilder1 setRepetitions(int repetitions);
+    WorkoutPlanBuilder1 addExercise(String exercise);
+    WorkoutPlan build();
 }

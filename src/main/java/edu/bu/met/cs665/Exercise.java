@@ -9,6 +9,9 @@ public class Exercise {
     private String equipment;
     private String difficulty;
     private String instructions;
+    private List<String> category;
+
+    // getters and setters for all fields...
 
     public String getName() {
         return name;
@@ -56,5 +59,13 @@ public class Exercise {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public List<String> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<String> category) {
+        this.category = category;
     }
 }

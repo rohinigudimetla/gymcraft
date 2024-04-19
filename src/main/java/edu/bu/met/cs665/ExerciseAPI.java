@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class ExerciseAPI {
     private static final Logger logger = LogManager.getLogger(ExerciseAPI.class);
-    private static final String API_URL = "https://api.api-ninjas.com/v1/exercises"; // Updated API URL
+    private static final String API_URL = "https://api.api-ninjas.com/v1/exercises"; 
 
     public List<Exercise> getExercises() {
         HttpClient client = HttpClient.newHttpClient();
