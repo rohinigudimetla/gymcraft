@@ -1,33 +1,29 @@
 package edu.bu.met.cs665;
 
+import java.util.List;
+
 public class WorkoutPlanDirector {
     private WorkoutPlanBuilder builder;
+    private ExerciseAPI exerciseAPI;
 
-    public WorkoutPlanDirector(WorkoutPlanBuilder builder) {
+    public WorkoutPlanDirector(WorkoutPlanBuilder builder, ExerciseAPI exerciseAPI) {
         this.builder = builder;
+        this.exerciseAPI = exerciseAPI;
     }
 
-    public WorkoutPlan buildBackWorkout() {
-        return builder.setFocusArea("Back")
-                .addExercise("Lat Pulldowns")
-                .addExercise("Seated Cable Rows")
-                .addExercise("Dumbbell Rows")
-                .setNumberOfSets(3)
+    public WorkoutPlan buildWorkout(String focusArea) {
+        List<Exercise> exercises = exerciseAPI.getExercises();
+        builder.setFocusArea(focusArea);
+
+        for (Exercise exercise : exercises) {
+            if (exercise.getCategory().contains(focusArea.toLowerCase())) {
+                builder.addExercise(exercise);
+            }
+        }
+
+        return builder.setNumberOfSets(3)
                 .setRepetitions(10)
                 .setDuration(45)
                 .build();
     }
-
-    public WorkoutPlan buildAbsWorkout() {
-        return builder.setFocusArea("Abs")
-                .addExercise("Crunches")
-                .addExercise("Leg Raises")
-                .addExercise("Planks")
-                .setNumberOfSets(3)
-                .setRepetitions(15)
-                .setDuration(30)
-                .build();
-    }
-
-    // Add more methods for other workout types
 }

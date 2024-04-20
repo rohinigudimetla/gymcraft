@@ -1,7 +1,10 @@
 package edu.bu.met.cs665;
 
+import java.util.List;
+
 public class ConcreteWorkoutPlanBuilder implements WorkoutPlanBuilder {
     private WorkoutPlan workoutPlan;
+    private List<Exercise> exercises;
 
     public ConcreteWorkoutPlanBuilder() {
         workoutPlan = new WorkoutPlan();
@@ -32,13 +35,14 @@ public class ConcreteWorkoutPlanBuilder implements WorkoutPlanBuilder {
     }
 
     @Override
-    public WorkoutPlanBuilder addExercise(String exercise) {
-        workoutPlan.getExercises().add(exercise);
+    public WorkoutPlanBuilder addExercise(Exercise exercise) {
+        exercises.add(exercise);
         return this;
     }
 
     @Override
     public WorkoutPlan build() {
+        workoutPlan.setExercises(exercises);
         return workoutPlan;
     }
 }
