@@ -1,54 +1,42 @@
 package edu.bu.met.cs665;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WorkoutPlan {
     private String focusArea;
-    private int duration;
-    private int numberOfSets;
-    private int repetitions;
     private List<Exercise> exercises;
+    private Map<Exercise, ExerciseDetails> exerciseDetailsMap;
 
-    // Getters
+    public WorkoutPlan() {
+        exercises = new ArrayList<>();
+        exerciseDetailsMap = new HashMap<>();
+    }
+
     public String getFocusArea() {
         return focusArea;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public int getNumberOfSets() {
-        return numberOfSets;
-    }
-
-    public int getRepetitions() {
-        return repetitions;
-    }
-
-
-
-    // Setters
     public void setFocusArea(String focusArea) {
         this.focusArea = focusArea;
     }
 
-    public void setDuration(int duration) {
-        this.duration = duration;
+    public List<Exercise> getExercises() {
+        return exercises;
     }
 
-    public void setNumberOfSets(int numberOfSets) {
-        this.numberOfSets = numberOfSets;
-    }
-
-    public void setRepetitions(int repetitions) {
-        this.repetitions = repetitions;
-    }
     public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
     }
 
-    public List<Exercise> getExercises() {
-        return exercises;
+    public void setExerciseDetails(Exercise exercise, int sets, int reps, int duration) {
+        ExerciseDetails details = new ExerciseDetails(sets, reps, duration);
+        exerciseDetailsMap.put(exercise, details);
+    }
+
+    public ExerciseDetails getExerciseDetails(Exercise exercise) {
+        return exerciseDetailsMap.get(exercise);
     }
 }

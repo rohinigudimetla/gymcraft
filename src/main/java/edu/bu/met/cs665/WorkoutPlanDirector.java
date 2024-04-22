@@ -1,5 +1,6 @@
 package edu.bu.met.cs665;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkoutPlanDirector {
@@ -11,19 +12,20 @@ public class WorkoutPlanDirector {
         this.exerciseAPI = exerciseAPI;
     }
 
-    public WorkoutPlan buildWorkout(String focusArea) {
+    public WorkoutPlan buildWorkout(String focusArea, List<Exercise> chosenExercises, int sets, int reps) {
         List<Exercise> exercises = exerciseAPI.getExercises();
         builder.setFocusArea(focusArea);
 
-        for (Exercise exercise : exercises) {
+        List<Exercise> filteredExercises = new ArrayList<>();
+
+        for (Exercise exercise : chosenExercises) {
             if (exercise.getCategory().contains(focusArea.toLowerCase())) {
+                filteredExercises.add(exercise);
                 builder.addExercise(exercise);
+                builder.setExerciseDetails(exercise, sets, reps, 0); // Set duration to 0 for now
             }
         }
 
-        return builder.setNumberOfSets(3)
-                .setRepetitions(10)
-                .setDuration(45)
-                .build();
+        return builder.build(filteredExercises, sets, reps);
     }
 }

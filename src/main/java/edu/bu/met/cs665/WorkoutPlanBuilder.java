@@ -4,9 +4,7 @@ import java.util.List;
 
 public interface WorkoutPlanBuilder {
     WorkoutPlanBuilder setFocusArea(String focusArea);
-    WorkoutPlanBuilder setDuration(int duration);
-    WorkoutPlanBuilder setNumberOfSets(int numberOfSets);
-    WorkoutPlanBuilder setRepetitions(int repetitions);
     WorkoutPlanBuilder addExercise(Exercise exercise);
-    WorkoutPlan build();
+    WorkoutPlanBuilder setExerciseDetails(Exercise exercise, int sets, int reps, int duration);
+    WorkoutPlan build(List<Exercise> chosenExercises, int sets, int reps);
 }

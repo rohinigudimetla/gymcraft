@@ -16,21 +16,16 @@ public class ExerciseHandler implements ICustomizationHandler {
     public void HandleRequest(CustomizationRequest request) {
         if (request.getType() == CustomizationType.FetchExercises) {
             List<Exercise> exercises = exerciseAPI.getExercises();
-            Object value = request.getValue();
-            String requestedCategory;
-
-            if (value instanceof String) {
-                requestedCategory = (String) value;
-            } else {
-                // Handle the case where the value is not a String
-                // You can throw an exception, log an error, or provide a default value
-                requestedCategory = "default";
-            }
+            String requestedCategory = (String) request.getValue();
+            int sets = request.getSets();
+            int reps = request.getReps();
+            int duration = request.getDuration();
 
             for (Exercise exercise : exercises) {
                 List<String> categories = exercise.getCategory();
                 if (categories != null && categories.contains(requestedCategory.toLowerCase())) {
                     builder.addExercise(exercise);
+                    builder.setExerciseDetails(exercise, sets, reps, duration);
                 }
             }
         } else if (nextHandler != null) {
