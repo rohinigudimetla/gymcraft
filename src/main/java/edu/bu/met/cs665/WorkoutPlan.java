@@ -31,12 +31,15 @@ public class WorkoutPlan {
         this.exercises = exercises;
     }
 
-    public void setExerciseDetails(Exercise exercise, int sets, int reps, int duration) {
-        ExerciseDetails details = new ExerciseDetails(sets, reps, duration);
+    public void setExerciseDetails(Exercise exercise, ExerciseDetails details) {
         exerciseDetailsMap.put(exercise, details);
     }
 
     public ExerciseDetails getExerciseDetails(Exercise exercise) {
         return exerciseDetailsMap.get(exercise);
+    }
+
+    public Map<Exercise, ExerciseDetails> getExerciseDetailsMap() {
+        return exerciseDetailsMap;
     }
 }

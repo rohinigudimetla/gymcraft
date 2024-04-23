@@ -36,11 +36,16 @@ public class ConcreteWorkoutPlanBuilder implements WorkoutPlanBuilder {
     }
 
     @Override
-    public WorkoutPlan build(List<Exercise> chosenExercises, int sets, int reps) {
-        workoutPlan.setExercises(chosenExercises);
-        for (Exercise exercise : chosenExercises) {
-            workoutPlan.setExerciseDetails(exercise, sets, reps, 0); // Set duration to 0 for now
+    public WorkoutPlan build() {
+        workoutPlan.setExercises(exercises);
+        for (Exercise exercise : exercises) {
+            workoutPlan.setExerciseDetails(exercise, exerciseDetailsMap.get(exercise));
         }
         return workoutPlan;
+    }
+
+    @Override
+    public List<Exercise> getExercises() {
+        return exercises;
     }
 }

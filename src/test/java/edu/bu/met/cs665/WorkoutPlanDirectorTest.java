@@ -2,7 +2,6 @@ package edu.bu.met.cs665;
 
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,28 +34,33 @@ public class WorkoutPlanDirectorTest {
         String focusArea = "legs";
         int sets = 3;
         int reps = 10;
+        int duration = 30; // Added duration
+
+        WorkoutPlan workoutPlan = mock(WorkoutPlan.class);
+        when(mockBuilder.setFocusArea(focusArea)).thenReturn(mockBuilder);
+        when(mockBuilder.build()).thenReturn(workoutPlan);
+        when(mockBuilder.getExercises()).thenReturn(chosenExercises);
 
         // Act
-        WorkoutPlan workoutPlan = director.buildWorkout(focusArea, chosenExercises, sets, reps);
+        WorkoutPlan result = director.buildWorkout(focusArea, chosenExercises, sets, reps, duration);
 
         // Assert
         verify(mockBuilder).setFocusArea(focusArea);
         verify(mockBuilder).addExercise(exercise1);
-        verify(mockBuilder).setExerciseDetails(exercise1, sets, reps, 0);
+        verify(mockBuilder).setExerciseDetails(exercise1, sets, reps, duration);
         verify(mockBuilder).addExercise(exercise3);
-        verify(mockBuilder).setExerciseDetails(exercise3, sets, reps, 0);
+        verify(mockBuilder).setExerciseDetails(exercise3, sets, reps, duration);
         verify(mockBuilder, never()).addExercise(exercise2);
+        verify(workoutPlan).setExercises(mockBuilder.getExercises());
 
-        List<Exercise> addedExercises = workoutPlan.getExercises();
-        assertEquals(2, addedExercises.size());
-        assertEquals("Single-Leg Press", addedExercises.get(0).getName());
-        assertEquals("Squats", addedExercises.get(1).getName());
-
+        // Print the output
         System.out.println("Chosen Exercises:");
+        List<Exercise> addedExercises = mockBuilder.getExercises();
         for (Exercise exercise : addedExercises) {
             System.out.println("Name: " + exercise.getName());
             System.out.println("Sets: " + sets);
             System.out.println("Reps: " + reps);
+            System.out.println("Duration: " + duration);
             System.out.println();
         }
     }

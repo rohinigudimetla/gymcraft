@@ -59,5 +59,13 @@ public class ExerciseHandlerTest {
         // Verify that only the exercise with the "legs" category was added
         assertEquals(1, capturedExercises.size());
         assertEquals("Single-Leg Press", capturedExercises.get(0).getName());
+
+        // Print the captured exercises
+        System.out.println("Captured Exercises:");
+        for (Exercise exercise : capturedExercises) {
+            System.out.println("Name: " + exercise.getName());
+            System.out.println("Category: " + exercise.getCategory());
+            System.out.println();
+        }
     }
 }
