@@ -17,8 +17,14 @@ public class Main {
     ConcreteWorkoutPlanBuilder builder = new ConcreteWorkoutPlanBuilder();
 
     // Create the variables
+    
+    // CHOOSE A FOCUS AREA
     String fa = "biceps";
+
+    // CHOOSE EXERCISE INDICES
     List<Integer> exInd = Arrays.asList(15, 8);
+
+    // CHOOSE EXERCISE SETS, REPS, AND DURATION
     List<List<Integer>> exDt = Arrays.asList(Arrays.asList(3, 8, 0), Arrays.asList(4, 10, 5));
 
     // Call the constructWorkoutPlan method
