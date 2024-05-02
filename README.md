@@ -7,23 +7,25 @@
 
 # Assignment Overview
 
-Please add a paragraph or two overviewing the objectives of the assignment.
+## GymCraft (Term Project)
+
+GymCraft is a software project designed to simulate a workout planning system.
+The system allows users to create customized workout plans based on their personal preferences and fitness goals. It uses the Builder pattern.
+The workout can be customised by entering a focus area that the user wants to work on (say, adbdominals or maybe, biceps). The user can enter their choice of exercises from abdominal exercises. Then they can enter the sets, reps and duration (if applicable) to the exercises. The workout is saved into a text file.
 
 # GitHub Repository Link:
 
-https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
+https://github.com/rohinigudimetla/gymcraft
 
 # Implementation Description
 
-For the assignment, please answer the following:
+Flexibility: The implementation is flexible due to the use of the Builder pattern. This pattern allows for the creation of different kinds of WorkoutPlan objects without the need for a constructor with many parameters. Adding or removing properties to the WorkoutPlan class is as simple as adding or removing methods from the builder.
 
-- Explain the level of flexibility in your implementation, including how new object types can
-  be easily added or removed in the future.
-- Discuss the simplicity and understandability of your implementation, ensuring that it is
-  easy for others to read and maintain.
-- Describe how you have avoided duplicated code and why it is important.
-- If applicable, mention any design patterns you have used and explain why they were
-  chosen.
+Simplicity and Understandability: The Builder pattern contributes to the simplicity and understandability of the code. It separates the construction of a WorkoutPlan object from its representation, making the code easier to read and maintain.
+
+Avoiding Duplicated Code: The Builder pattern helps avoid code duplication. Instead of having multiple constructors that differ only in their parameter list, we have one builder class that can be used to construct a WorkoutPlan object in various ways.
+
+The Builder pattern was chosen because it provides a flexible solution for creating complex objects, and it improves the readability and maintainability of the code by separating the construction of an object from its representation.
 
 # Maven Commands
 
@@ -58,6 +60,8 @@ mvn compile
 ```bash
 java -jar target/JavaProjectTemplate-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
+
+You will find the workoutPlan.txt file within the GymCraft folder.
 
 ## JUnit Tests
 
