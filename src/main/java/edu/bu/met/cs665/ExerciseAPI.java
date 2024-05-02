@@ -1,82 +1,63 @@
 package edu.bu.met.cs665;
+
 import java.io.IOException;
-import java.util.Collections;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-import java.util.HashMap;
-import java.util.Map;
+
 public class ExerciseAPI {
-    private static final Logger logger = LogManager.getLogger(ExerciseAPI.class);
-    private static final String API_URL = "https://api.api-ninjas.com/v1/exercises"; 
+    private static final String EXERCISES_JSON_PATH = "data/exercises.json";
 
     public List<Exercise> getExercises() {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(API_URL))
-                .header("X-Api-Key", "QNzzbTuv5/Zdq6dgHtyHGQ==szKtxfSLU25z0bQG") // my api key
-                .build();
-
         try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        
-            // Print the response body
-            System.out.println(response.body());
-        
-            JSONArray jsonArray = new JSONArray(response.body());
-        
-            Map<String, String> muscleGroupMapping = new HashMap<>();
-            muscleGroupMapping.put("quadriceps", "legs");
-            muscleGroupMapping.put("hamstrings", "legs");
-            muscleGroupMapping.put("calves", "legs");
-            muscleGroupMapping.put("biceps", "arms");
-            muscleGroupMapping.put("triceps", "arms");
-            muscleGroupMapping.put("forearms", "arms");
-            muscleGroupMapping.put("chest", "chest");
-            muscleGroupMapping.put("upper_back", "back");
-            muscleGroupMapping.put("lower_back", "back");
-            muscleGroupMapping.put("shoulders", "shoulders");
-            muscleGroupMapping.put("abdominals", "abs");
-            muscleGroupMapping.put("glutes", "glutes");
-        
+            String exercisesJson = Files.readString(Paths.get(EXERCISES_JSON_PATH));
+            JSONArray jsonArray = new JSONArray(exercisesJson);
             List<Exercise> exercises = new ArrayList<>();
+
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Exercise exercise = new Exercise();
                 exercise.setName(jsonObject.getString("name"));
-                exercise.setType(jsonObject.getString("type"));
-                exercise.setMuscle(jsonObject.getString("muscle"));
-                exercise.setEquipment(jsonObject.getString("equipment"));
-                exercise.setDifficulty(jsonObject.getString("difficulty"));
-                exercise.setInstructions(jsonObject.getString("instructions"));
-        
-                // Set the category field based on the muscle group mapping
-                String muscleGroup = jsonObject.getString("muscle");
-                String category = muscleGroupMapping.get(muscleGroup);
-                if (category != null) {
-                    List<String> categories = new ArrayList<>();
-                    categories.add(category);
-                    exercise.setCategory(categories);
+            
+                // Handle null force value
+                if (!jsonObject.isNull("force")) {
+                    exercise.setForce(jsonObject.getString("force"));
+                } else {
+                    exercise.setForce(null);
                 }
-        
+            
+                exercise.setLevel(jsonObject.getString("level"));
+            
+                // Handle null mechanic value
+                if (!jsonObject.isNull("mechanic")) {
+                    exercise.setMechanic(jsonObject.getString("mechanic"));
+                } else {
+                    exercise.setMechanic(null);
+                }
+            
+                // Handle null equipment value
+                if (!jsonObject.isNull("equipment")) {
+                    exercise.setEquipment(jsonObject.getString("equipment"));
+                } else {
+                    exercise.setEquipment(null);
+                }
+            
+                exercise.setPrimaryMuscles(jsonObject.getJSONArray("primaryMuscles").join(",").toLowerCase());
+                exercise.setSecondaryMuscles(jsonObject.getJSONArray("secondaryMuscles").join(",").toLowerCase());
+                exercise.setInstructions(jsonObject.getJSONArray("instructions").join("\\n"));
+                exercise.setCategory(jsonObject.getString("category"));
+                exercise.setId(jsonObject.getString("id"));
                 exercises.add(exercise);
             }
-        
+
             return exercises;
-        } catch (IOException | InterruptedException | JSONException e) {
-            logger.error("Failed to fetch exercises", e);
-            return Collections.emptyList();
-        } catch (Exception e) {
-            logger.error("Failed to fetch exercises", e);
-            return Collections.emptyList();
+        } catch (IOException | JSONException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
         }
-}
+    }
 }

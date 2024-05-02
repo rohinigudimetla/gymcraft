@@ -7,29 +7,20 @@
  */
 
 package edu.bu.met.cs665;
+import java.util.*;
 
-
-
-/**
- * This is the Main class.
- */
 public class Main {
-
-  /**
-   * A main method to run examples.
-   * You may use this method for development purposes as you start building your
-   * assignments/final project.  This could prove convenient to test as you are developing.
-   * However, please note that every assignment/final projects requires JUnit tests.
-   */
   public static void main(String[] args) {
-    System.out.println("This is a test message from the Main class (Main.java file)");
+    // Instantiate the director and builder
+    WorkoutPlanDirector director = new WorkoutPlanDirector();
+    ConcreteWorkoutPlanBuilder builder = new ConcreteWorkoutPlanBuilder();
+
+    // Create the variables
+    String fa = "biceps";
+    List<Integer> exInd = Arrays.asList(15, 8);
+    List<List<Integer>> exDt = Arrays.asList(Arrays.asList(3, 8, 0), Arrays.asList(4, 10, 5));
+
+    // Call the constructWorkoutPlan method
+    director.constructWorkoutPlan(builder, fa, exInd, exDt);
   }
-
-  /**
-   * This method performs XYZ and returns String.
-   *
-   * @return String
-   */
-
-
 }

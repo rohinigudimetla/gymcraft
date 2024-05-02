@@ -1,17 +1,23 @@
 package edu.bu.met.cs665;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Exercise {
     private String name;
-    private String type;
-    private String muscle;
+    private String force;
+    private String level;
+    private String mechanic;
     private String equipment;
-    private String difficulty;
-    private String instructions;
-    private List<String> category;
+    private String primaryMuscles;
+    private String secondaryMuscles;
+    private List<String> instructions;
+    private String category;
+    private String id;
 
-    // getters and setters for all fields...
+    public Exercise() {
+        instructions = new ArrayList<>();
+    }
 
     public String getName() {
         return name;
@@ -21,20 +27,28 @@ public class Exercise {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getForce() {
+        return force;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setForce(String force) {
+        this.force = force;
     }
 
-    public String getMuscle() {
-        return muscle;
+    public String getLevel() {
+        return level;
     }
 
-    public void setMuscle(String muscle) {
-        this.muscle = muscle;
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public String getMechanic() {
+        return mechanic;
+    }
+
+    public void setMechanic(String mechanic) {
+        this.mechanic = mechanic;
     }
 
     public String getEquipment() {
@@ -45,27 +59,79 @@ public class Exercise {
         this.equipment = equipment;
     }
 
-    public String getDifficulty() {
-        return difficulty;
+    public String getPrimaryMuscles() {
+        return primaryMuscles;
     }
 
-    public void setDifficulty(String difficulty) {
-        this.difficulty = difficulty;
+    public void setPrimaryMuscles(String primaryMuscles) {
+        this.primaryMuscles = primaryMuscles;
     }
 
-    public String getInstructions() {
+    public String getSecondaryMuscles() {
+        return secondaryMuscles;
+    }
+
+    public void setSecondaryMuscles(String secondaryMuscles) {
+        this.secondaryMuscles = secondaryMuscles;
+    }
+
+    public List<String> getInstructions() {
         return instructions;
     }
 
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
+    public void setInstructions(String instructionsString) {
+        String[] instructionsArray = instructionsString.split("\\\\\\\\n");
+        instructions.clear();
+        for (String instruction : instructionsArray) {
+            instructions.add(instruction);
+        }
     }
 
-    public List<String> getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(List<String> category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+//    using a method to see if the exercise data is retrieved correctly. DELETE THIS LATER
+    public static void main(String[] args) {
+        // Create an Exercise object
+        Exercise exercise = new Exercise();
+        exercise.setName("Push-Up");
+        exercise.setForce("push");
+        exercise.setLevel("beginner");
+        exercise.setMechanic("compound");
+        exercise.setEquipment("body only");
+        exercise.setPrimaryMuscles("chest, shoulders, triceps");
+        exercise.setSecondaryMuscles("abdominals");
+        exercise.setInstructions("Lie prone on the floor...");
+        exercise.setCategory("chest, shoulders, triceps");
+        exercise.setId("push_up");
+
+        // Call the method you want to run
+        printExerciseDetails(exercise);
+    }
+
+    public static void printExerciseDetails(Exercise exercise) {
+        System.out.println("Exercise Name: " + exercise.getName());
+        System.out.println("Force: " + exercise.getForce());
+        System.out.println("Level: " + exercise.getLevel());
+        System.out.println("Mechanic: " + exercise.getMechanic());
+        System.out.println("Equipment: " + exercise.getEquipment());
+        System.out.println("Primary Muscles: " + exercise.getPrimaryMuscles());
+        System.out.println("Secondary Muscles: " + exercise.getSecondaryMuscles());
+        System.out.println("Instructions: " + exercise.getInstructions());
+        System.out.println("Category: " + exercise.getCategory());
+        System.out.println("ID: " + exercise.getId());
     }
 }
