@@ -1,3 +1,11 @@
+/**
+ * Name: ROHINI GUDIMETLA
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: ExerciseFilterTest.java
+ * Description: The ExerciseFilterTest class is responsible for testing the ExerciseFilter class.
+ */
+
 package edu.bu.met.cs665;
 
 import org.junit.Before;

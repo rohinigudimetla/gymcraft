@@ -1,9 +1,10 @@
 /**
- * Name: FIRST_NAME LAST_NAME
+ * Name: ROHINI GUDIMETLA
  * Course: CS-665 Software Designs & Patterns
- * Date: MM/DD/YYYY
+ * Date: 05/02/2024
  * File Name: Main.java
- * Description: Write a description for this class
+ * Description: The Main class serves as the entry point for the application.
+ * It initializes necessary components and starts the application's logic.
  */
 
 package edu.bu.met.cs665;

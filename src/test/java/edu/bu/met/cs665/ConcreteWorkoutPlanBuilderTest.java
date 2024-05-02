@@ -1,3 +1,11 @@
+/**
+ * Name: ROHINI GUDIMETLA
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: ConcreteWorkoutPlanBuilderTest.java
+ * Description: The ConcreteWorkoutPlanBuilderTest class tests the ConcreteWorkoutPlanBuilder class. 
+ */
+
 package edu.bu.met.cs665;
 import org.junit.Before;
 import org.junit.Test;

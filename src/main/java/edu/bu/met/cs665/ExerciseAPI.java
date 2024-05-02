@@ -1,3 +1,11 @@
+/**
+ * Name: ROHINI GUDIMETLA
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: ExerciseAPI.java
+ * Description: The ExerciseAPI class is responsible for reading the exercises from the exercises.json file.
+ */
+
 package edu.bu.met.cs665;
 
 import java.io.IOException;

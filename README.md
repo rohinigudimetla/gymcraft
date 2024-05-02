@@ -15,7 +15,7 @@ https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
 
 # Implementation Description
 
-For each assignment, please answer the following:
+For the assignment, please answer the following:
 
 - Explain the level of flexibility in your implementation, including how new object types can
   be easily added or removed in the future.
@@ -39,12 +39,24 @@ Maven also integrates with other development tools, such as IDEs and continuous 
 
 Maven provides a large number of plugins for various tasks, such as compiling code, running tests, generating reports, and creating JAR files. This makes it a versatile tool that can be used for many different types of Java projects.
 
+## Package
+
+```bash
+mvn clean package
+```
+
 ## Compile
 
 Type on the command line:
 
 ```bash
-mvn clean compile
+mvn compile
+```
+
+## Run JAR file
+
+```bash
+java -jar target/JavaProjectTemplate-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
 ## JUnit Tests

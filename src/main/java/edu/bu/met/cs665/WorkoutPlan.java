@@ -1,116 +1,13 @@
+/**
+ * Name: ROHINI GUDIMETLA
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: WorkoutPlan.java
+ * Description: The WorkoutPlan class is responsible for storing the details of a workout plan.
+ */
+
 package edu.bu.met.cs665;
 
-/**import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class WorkoutPlan {
-    private String focusArea;
-    private List<Exercise> exercises;
-    private Map<Exercise, ExerciseDetails> exerciseDetailsMap;
-    private Map<Exercise, List<String>> exerciseInstructionsMap;
-    private Map<Exercise, String> exercisePrimaryMusclesMap;
-    private Map<Exercise, String> exerciseSecondaryMusclesMap;
-    private Map<Exercise, String> exerciseIdMap;
-
-    public WorkoutPlan() {
-        exercises = new ArrayList<>();
-        exerciseDetailsMap = new HashMap<>();
-        exerciseInstructionsMap = new HashMap<>();
-        exercisePrimaryMusclesMap = new HashMap<>();
-        exerciseSecondaryMusclesMap = new HashMap<>();
-        exerciseIdMap = new HashMap<>();
-    }
-
-    public String getFocusArea() {
-        return focusArea;
-    }
-
-    public void setFocusArea(String focusArea) {
-        this.focusArea = focusArea;
-    }
-
-    public List<Exercise> getExercises() {
-        return exercises;
-    }
-
-    public void setExercises(List<Exercise> exercises) {
-        this.exercises = new ArrayList<>(exercises);
-    }
-
-    public void setExerciseDetails(Exercise exercise, ExerciseDetails details) {
-        exerciseDetailsMap.put(exercise, details);
-    }
-
-    public ExerciseDetails getExerciseDetails(Exercise exercise) {
-        return exerciseDetailsMap.get(exercise);
-    }
-
-    public Map<Exercise, ExerciseDetails> getExerciseDetailsMap() {
-        return exerciseDetailsMap;
-    }
-
-    public void setExerciseInstructions(Exercise exercise, List<String> instructions) {
-        exerciseInstructionsMap.put(exercise, instructions);
-    }
-
-    public List<String> getExerciseInstructions(Exercise exercise) {
-        return exerciseInstructionsMap.get(exercise);
-    }
-
-    public void setExercisePrimaryMuscles(Exercise exercise, String primaryMuscles) {
-        exercisePrimaryMusclesMap.put(exercise, primaryMuscles);
-    }
-
-    public String getExercisePrimaryMuscles(Exercise exercise) {
-        return exercisePrimaryMusclesMap.get(exercise);
-    }
-
-    public void setExerciseSecondaryMuscles(Exercise exercise, String secondaryMuscles) {
-        exerciseSecondaryMusclesMap.put(exercise, secondaryMuscles);
-    }
-
-    public String getExerciseSecondaryMuscles(Exercise exercise) {
-        return exerciseSecondaryMusclesMap.get(exercise);
-    }
-
-    public void setExerciseId(Exercise exercise, String id) {
-        exerciseIdMap.put(exercise, id);
-    }
-
-    public String getExerciseId(Exercise exercise) {
-        return exerciseIdMap.get(exercise);
-    }
-
-    public List<Exercise> getFilteredExercises(String focusArea) {
-        if (focusArea == null || focusArea.isEmpty()) {
-            return new ArrayList<>(exercises);
-        }
-
-        List<Exercise> filteredExercises = new ArrayList<>();
-        for (Exercise exercise : exercises) {
-            String primaryMuscles = exercisePrimaryMusclesMap.get(exercise);
-            String secondaryMuscles = exerciseSecondaryMusclesMap.get(exercise);
-            if (primaryMuscles != null && primaryMuscles.contains(focusArea) ||
-                    secondaryMuscles != null && secondaryMuscles.contains(focusArea)) {
-                filteredExercises.add(exercise);
-            }
-        }
-        return filteredExercises;
-    }
-
-    public void removeExercise(Exercise exercise) {
-        exercises.remove(exercise);
-        exerciseDetailsMap.remove(exercise);
-        exerciseInstructionsMap.remove(exercise);
-        exercisePrimaryMusclesMap.remove(exercise);
-        exerciseSecondaryMusclesMap.remove(exercise);
-        exerciseIdMap.remove(exercise);
-    }
-
-
-}*/
 
 import java.util.*;
 

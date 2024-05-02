@@ -1,34 +1,10 @@
-/**package edu.bu.met.cs665;
-
-import java.util.List;
-
-public class ExerciseFilter {
-    private WorkoutPlanBuilder builder;
-    private ExerciseAPI exerciseAPI;
-
-    public ExerciseFilter(WorkoutPlanBuilder builder, ExerciseAPI exerciseAPI) {
-        this.builder = builder;
-        this.exerciseAPI = exerciseAPI;
-    }
-
-    public void CustomizeWorkoutPlan(String requestedPrimaryMuscle, int sets, int reps, int duration) {
-        List<Exercise> exercises = exerciseAPI.getExercises();
-
-        for (Exercise exercise : exercises) {
-            String primaryMuscles = exercise.getPrimaryMuscles();
-            if (primaryMuscles != null && primaryMuscles.toLowerCase().contains(requestedPrimaryMuscle.toLowerCase())) {
-                builder.addExercise(exercise);
-                builder.setExerciseDetails(exercise, sets, reps, duration);
-                builder.setExerciseInstructions(exercise, exercise.getInstructions());
-                builder.setExercisePrimaryMuscles(exercise, exercise.getPrimaryMuscles());
-                builder.setExerciseSecondaryMuscles(exercise, exercise.getSecondaryMuscles());
-                builder.setExerciseId(exercise, exercise.getId());
-            }
-        }
-    }
-} 
-*/
-
+/**
+ * Name: ROHINI GUDIMETLA
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: ExerciseFilter.java
+ * Description: The ExerciseFilter class is responsible for filtering exercises based on the focus area and exercise indices.
+ */
 package edu.bu.met.cs665;
 
 import java.util.ArrayList;

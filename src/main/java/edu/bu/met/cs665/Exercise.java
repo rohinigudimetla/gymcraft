@@ -1,3 +1,11 @@
+/**
+ * Name: ROHINI GUDIMETLA
+ * Course: CS-665 Software Designs & Patterns
+ * Date: 05/02/2024
+ * File Name: Exercise.java
+ * Description: The Exercise class is responsible for storing the details of an exercise.
+ */
+
 package edu.bu.met.cs665;
 
 import java.util.List;
